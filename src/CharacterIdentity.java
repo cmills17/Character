@@ -16,15 +16,24 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class CharacterIdentity extends JFrame
 {
 	
+	static ArrayList<String[]> data;
+	
 	
 	public static void main(String[] args){
 		
-		
+		data = csvfile.getData();
 		
 		JFrame frame = new JFrame ("project");
 		final JTextField textField = new JTextField(20);
@@ -33,21 +42,18 @@ public class CharacterIdentity extends JFrame
 		frame.setSize(500,500);
 		textField.setFont(new Font("Serif", Font.BOLD, 50)); 
 		final JLabel unicode = new JLabel ("unicode");
-		final JLabel entities = new JLabel("entities");
+		final JLabel entities = new JLabel("engdef");
 		frame.getContentPane().add(unicode, BorderLayout.NORTH);
 		frame.getContentPane().add(entities, BorderLayout.SOUTH);
+		
 		DocumentListener listener = new DocumentListener() { 
 	
-		
-		
-
-			@Override
 			public void insertUpdate(DocumentEvent e)
 			{
 				String text = textField.getText(); 
 				int firstChar = text.charAt(0); //makes the first letter an "int"
 				unicode.setText("decimal and entity: " + firstChar + " " + "&#" + firstChar + "; " +"hex and hex entity: 0x" + String.format("%04x", firstChar) + " &#x" + String.format("%04x", firstChar) + ";");  //makes the decimal and hex value appear for the int
-				
+				entities.setText("engdef:" + findName("0x" + String.format("%x", firstChar)));
 			}
 
 		
@@ -70,5 +76,17 @@ public class CharacterIdentity extends JFrame
 		
 		
 		
+	}
+	
+	static String findName(String hex){
+		for (String[] line : data){
+			if(line[1].endsWith(hex)){
+				return line[4]; 
+			}
+		}
+		return "";
+		
+		
+	
 	}
 }
