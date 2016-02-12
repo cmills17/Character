@@ -53,7 +53,7 @@ public class CharacterIdentity extends JFrame
 				String text = textField.getText(); 
 				int firstChar = text.charAt(0); //makes the first letter an "int"
 				unicode.setText("decimal and entity: " + firstChar + " " + "&#" + firstChar + "; " +"hex and hex entity: 0x" + String.format("%04x", firstChar) + " &#x" + String.format("%04x", firstChar) + ";");  //makes the decimal and hex value appear for the int
-				entities.setText("engdef:" + findName("0x" + String.format("%x", firstChar)) + "alpha: " + findName("0x" + String.format("%x", firstChar)));
+				entities.setText("engdef:" + findName("0x" + String.format("%x", firstChar)) + "alpha: " + findAlpha("0x" + String.format("%x", firstChar)));
 			}
 
 		
