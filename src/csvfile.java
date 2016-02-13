@@ -12,15 +12,15 @@ import java.util.Map;
 public class csvfile
 {
 
-	public static ArrayList<String[]> getData()
+	public static ArrayList<String[]> getData() //makes the function: getData
 	{
 		ArrayList<String[]> data = new ArrayList<String[]>(); 
 		
-		String csvFile = "entityfacts.csv"; //
-		BufferedReader br = null; //
-		String line = "";
+		String csvFile = "entityfacts.csv"; //makes the csv file a string
+		BufferedReader br = null; //have the reader begin empty 
+		String line = ""; 
 		String cvsSplitBy = ","; // splits the row at every comma
-		try
+		try //begins try/catch 
 		{
 
 			br = new BufferedReader(new FileReader(csvFile)); // puts the csv
@@ -67,7 +67,7 @@ public class csvfile
 			}
 
 		}
-		catch (FileNotFoundException e)
+		catch (FileNotFoundException e)  //part of try/catch
 		{
 			e.printStackTrace();
 		}
@@ -91,7 +91,7 @@ public class csvfile
 		}
 
 		System.out.println("Done"); // prints the word "done"
-		return data;
+		return data;  //returns the data, lets this whole function work when called in other class
 	}
 
 }
