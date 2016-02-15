@@ -31,24 +31,25 @@ public class csvfile
 															  // called br
 			while ((line = br.readLine()) != null)
 			{ // reads in individual lines until last line is empty/null
-				line = br.readLine();
-				// System.out.println(line);
-				String[] thisLine = line.split(cvsSplitBy); // splits the line
-															// into columns
+			line = br.readLine();
+			// System.out.println(line);
+			String[] thisLine = line.split(cvsSplitBy); // splits the line
+			// into columns
+			for (int i = 0; i < thisLine.length; i++) {
+			thisLine[i] = CharacterIdentity.removeSpace(thisLine[i]);
+			}
 
-				if (thisLine.length > 1)
-				{ // sets it up so that prints only rows w/ more than 1 value
-					System.out.println(thisLine[1]); // makes it just print
-													 // column1
-					if (thisLine.length > 4) // if row has over 4 values
-					{
-						data.add(thisLine);
-						System.out.println(thisLine[4]); // print value in
-														 // column4
-					}
-
-					// for column[1] = 0x22c1 {
-					// System.out.println([5]);
+			if (thisLine.length > 1)
+			{ // sets it up so that prints only rows w/ more than 1 value
+			System.out.print(thisLine[1]); // makes it just print
+			 // column1
+			if (thisLine.length > 4) // if row has over 4 values
+			{
+			data.add(thisLine);
+			System.out.print(": " + thisLine[4]); // print value in
+			 // column4
+			}
+			System.out.println();
 				}
 				for (int i = 0; i < thisLine.length; i++)
 				{

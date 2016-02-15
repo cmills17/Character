@@ -27,6 +27,27 @@ import java.util.Map;
 
 public class CharacterIdentity extends JFrame //creates JFrame
 {
+	public static String removeSpace(String words)
+	{ // creating this to remove the spaces before the hex entities and english
+	  // definitions
+		String newString = ""; // creates a new string
+		outer: for (int i = 0; i < words.length(); i++) // initializing, terminating, updating the for loop
+		{ 
+			if (words.charAt(i) == '"') //checking if char is a double quotation or not
+			{
+				for (int j = i; j < words.length(); j++) 
+				{
+					newString += words.charAt(j); //adds everything from the double quotation to the end of the string
+				}
+				break outer;
+			}
+			if (words.charAt(i) != ' ') //checking if char is a space or not
+			{
+				newString += words.charAt(i); //making sure there's nothing important in front of double quotation
+			}
+		}
+		return newString;
+	}
 	
 	static ArrayList<String[]> data; //arraylist of strings called data
 	
