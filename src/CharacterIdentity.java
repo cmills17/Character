@@ -52,8 +52,8 @@ public class CharacterIdentity extends JFrame //creates JFrame
 			{
 				String text = textField.getText();  //puts whatever text is put into the textfield into a varible "text
 				int firstChar = text.charAt(0); //makes the first letter an "int"
-				unicode.setText("decimal and entity: " + firstChar + " " + "&#" + firstChar + "; " +"hex and hex entity: 0x" + String.format("%04x", firstChar) + " &#x" + String.format("%04x", firstChar) + ";");  //makes the decimal and hex value appear for the int, and hex entity 
-				entities.setText("engdef:" + findName("0x" + String.format("%x", firstChar)) + " alpha: " + findAlpha("0x" + String.format("%x", firstChar)) + " print in java : u" + String.format("%04x", firstChar));  //prints in bottom jlabel the engdeg, alpha, and  how to print in java
+				unicode.setText("decimal and dec entity: " + firstChar + " " + "&#" + firstChar + "; " +"hex and hex entity: 0x" + String.format("%04x", firstChar) + " &#x" + String.format("%04x", firstChar) + ";");  //makes the decimal and hex value appear for the int, and hex entity 
+				entities.setText("engdef:" + findName("0x" + String.format("%x", firstChar)) + "     alpha: " + findAlpha("0x" + String.format("%x", firstChar)) + " print in java : \\u" + String.format("%04x", firstChar) + " UTF-8: " + String.format("%x", firstChar));  //prints in bottom jlabel the engdeg, alpha, and  how to print in java
 			}
 
 		
